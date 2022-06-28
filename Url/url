@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            <title>Short your URLs</title>
+	        </head>
+		    <body>
+		        <center>
+			    <br>
+
+    <!-- Start of banner code -->
+    <a href="https://exe.io/ref/Anonymouslol"><img src="https://exe.io/img/ref/r2.gif" title="CuT URLs - Earn money by shortening links with the highest CPMs Ever!" /></a><p></p><p></p>
+    <!-- End of banner code -->
+
+    <form action="javascript:ShortTheLink()">
+        <input id="ShortLink" placeholder="Put here the long link!" class="inp" type="url" required><p></p><br>
+	    <input id="Alias" placeholder="Put here a alias (opcional)" class="inp" type="text"><p></p><br>
+
+    <input type="submit" value="Shorten it!" id="Start"><br><br><br>
+        <h2>The url shortened is: </h2>
+	    <h1><div id="output"></div></h1><p></p><p></p>
+
+
+    </form>
+        </center>
+	        <script>
+
+            var ShortLink = document.getElementById("ShortLink");
+	                var Alias = document.getElementById("Alias");
+			            var output = document.getElementById("output");
+				                var Start = document.getElementById("Start");
+
+function ShortTheLink(){
+
+var url = "https://exe.io/api?api=89f51178e7f8f341a977320233ed5ddec7dfca25&url=" + ShortLink.value + "&alias=" + Alias.value;
+
+var xhr = new XMLHttpRequest();
+xhr.open("GET", url);
+
+xhr.onreadystatechange = function () {
+   if (xhr.readyState === 4) {
+
+output.innerHTML = JSON.parse(xhr.responseText.replaceAll(String.fromCharCode(92),"")).shortenedUrl + "\n \n <p></p><button onclick='Copy()' id='copyBtn'>Copy the Website</button>";
+
+   }else{
+
+       output.innerHTML = "It has occurred an error while shortening the link!"
+
+   }};
+
+xhr.send();
+}
+
+function Copy(){
+
+  var r = document.createRange();
+  r.selectNode(document.getElementById("output"));
+  window.getSelection().removeAllRanges();
+  window.getSelection().addRange(r);
+  document.execCommand('copy');
+  window.getSelection().removeAllRanges();
+  alert("Copied!");
+
+}
+
+
+        </script>
+	        <style>
+
+            .inp{
+
+               width: 70vw;
+	                      height: 5vh;
+			                     transition: 1s ease-in-out;
+					                    outline: 0;
+							                   border: 1.5px #000 solid;
+									                  text-align: center;
+											              }
+
+            .inp:hover{
+
+                transition: 1s ease-in-out;
+		                border-radius: 10vw;
+				                border: 1.5px #000 solid;
+
+            }
+
+            #Start{
+
+                width: 60vw;
+		                height: 6vh;
+				                font-size: 5vw;
+						                transition: 1s ease-in-out;
+								                background-color: black;
+										                color: white;
+												                border:none;
+														            }
+
+            #Start:hover{
+
+                border-radius: 10vw;
+		                transition: 1s ease-in-out;
+				            }
+					                #copyBtn{
+
+                width: 60vw;
+		                height: 6vh;
+				                font-size: 5vw;
+						                transition: 1s ease-in-out;
+								                background-color: black;
+										                color: white;
+												                border:none;
+														            }
+
+            #copyBtn:hover{
+
+                border-radius: 10vw;
+		                transition: 1s ease-in-out;
+				            }
+
+        </style>
+	    </body>
+	    </html>
